@@ -1,0 +1,139 @@
+.header {
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-pale);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-md) var(--space-xl);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.logo-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-text .brand {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--black);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.logo-text .tagline {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 400;
+  color: var(--gray);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.main-nav {
+  display: flex;
+  gap: var(--space-xl);
+}
+
+.main-nav a {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--charcoal);
+  transition: color var(--transition-fast);
+}
+
+.main-nav a:hover {
+  color: var(--coral);
+}
+
+.main-nav a.active {
+  color: var(--coral);
+  font-weight: 500;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.search-btn {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--gray-pale);
+  border-radius: 50%;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.search-btn:hover {
+  border-color: var(--coral);
+}
+
+.search-btn svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--charcoal);
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--coral);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--white);
+  transition: transform var(--transition-fast);
+}
+
+.avatar:hover {
+  transform: scale(1.05);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .main-nav {
+    display: none;
+  }
+
+  .logo-text .tagline {
+    display: none;
+  }
+
+  .header-content {
+    padding: var(--space-md);
+  }
+}
