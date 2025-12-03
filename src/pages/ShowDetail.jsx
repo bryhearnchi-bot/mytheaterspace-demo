@@ -12,8 +12,8 @@ function ShowDetail() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="font-display text-[24px] font-semibold text-white mb-4">Show not found</h1>
-          <Link to="/" className="text-[#C41E3A] hover:text-white transition-colors text-[13px]">
+          <h1 className="font-display text-[24px] font-semibold mb-4" style={{ color: 'var(--text-primary)' }}>Show not found</h1>
+          <Link to="/" className="text-[#C41E3A] transition-colors text-[13px]">
             Return home
           </Link>
         </div>
@@ -37,6 +37,7 @@ function ShowDetail() {
             alt={show.title}
             className="w-full h-full object-cover"
           />
+          {/* Always dark gradients for cinematic hero effect */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-[#080808]/50 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-transparent" />
         </div>
@@ -83,7 +84,7 @@ function ShowDetail() {
 
             {/* Rating */}
             <div className="flex items-center gap-3 mb-5">
-              <span className="text-[12px] text-[#A8A8A8]">Your rating:</span>
+              <span className="text-[12px]" style={{ color: 'var(--text-secondary)' }}>Your rating:</span>
               <StarRating rating={show.rating} size="md" interactive />
             </div>
 
@@ -120,15 +121,15 @@ function ShowDetail() {
           <div className="space-y-3">
             <div className="flex items-center gap-3 text-[13px]">
               <MapPin className="w-4 h-4 text-[#C41E3A]" />
-              <span className="text-[#A8A8A8]">{show.venue}</span>
+              <span style={{ color: 'var(--text-secondary)' }}>{show.venue}</span>
             </div>
             <div className="flex items-center gap-3 text-[13px]">
               <Calendar className="w-4 h-4 text-[#C41E3A]" />
-              <span className="text-[#A8A8A8]">Seen on March 10, 2024</span>
+              <span style={{ color: 'var(--text-secondary)' }}>Seen on March 10, 2024</span>
             </div>
             <div className="flex items-center gap-3 text-[13px]">
               <Clock className="w-4 h-4 text-[#C41E3A]" />
-              <span className="text-[#A8A8A8]">2h 30m (with intermission)</span>
+              <span style={{ color: 'var(--text-secondary)' }}>2h 30m (with intermission)</span>
             </div>
           </div>
         </motion.div>
@@ -141,8 +142,8 @@ function ShowDetail() {
             transition={{ delay: 0.3 }}
             className="mb-6"
           >
-            <h2 className="font-display text-[18px] font-semibold text-white mb-3">About</h2>
-            <p className="text-[13px] text-[#A8A8A8] leading-relaxed">{show.description}</p>
+            <h2 className="font-display text-[18px] font-semibold mb-3" style={{ color: 'var(--text-primary)' }}>About</h2>
+            <p className="text-[13px] leading-relaxed" style={{ color: 'var(--text-secondary)' }}>{show.description}</p>
           </motion.div>
         )}
 
@@ -153,8 +154,8 @@ function ShowDetail() {
           transition={{ delay: 0.4 }}
           className="card p-4 mb-6"
         >
-          <h2 className="font-display text-[18px] font-semibold text-white mb-3">Your Notes</h2>
-          <p className="text-[13px] text-[#A8A8A8] leading-relaxed mb-3">
+          <h2 className="font-display text-[18px] font-semibold mb-3" style={{ color: 'var(--text-primary)' }}>Your Notes</h2>
+          <p className="text-[13px] leading-relaxed mb-3" style={{ color: 'var(--text-secondary)' }}>
             "An absolutely breathtaking production. The staging was innovative and the performances were top-notch. Would definitely see again."
           </p>
           <button className="text-[11px] text-[#C41E3A] uppercase font-bold tracking-[0.12em] hover:text-white transition-colors">
@@ -169,7 +170,7 @@ function ShowDetail() {
           transition={{ delay: 0.5 }}
           className="mb-6"
         >
-          <h2 className="font-display text-[18px] font-semibold text-white mb-4">Community Stats</h2>
+          <h2 className="font-display text-[18px] font-semibold mb-4" style={{ color: 'var(--text-primary)' }}>Community Stats</h2>
           <div className="grid grid-cols-3 gap-3">
             {[
               { value: '4.2', label: 'Avg Rating' },
@@ -177,8 +178,8 @@ function ShowDetail() {
               { value: '342', label: 'Want to See' },
             ].map((stat) => (
               <div key={stat.label} className="card p-4 text-center">
-                <div className="text-xl font-display font-bold text-white">{stat.value}</div>
-                <div className="text-[10px] text-[#5A5A5A] uppercase tracking-[0.1em] mt-0.5">{stat.label}</div>
+                <div className="text-xl font-display font-bold" style={{ color: 'var(--text-primary)' }}>{stat.value}</div>
+                <div className="text-[10px] uppercase tracking-[0.1em] mt-0.5" style={{ color: 'var(--text-muted)' }}>{stat.label}</div>
               </div>
             ))}
           </div>
@@ -190,11 +191,11 @@ function ShowDetail() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
         >
-          <h2 className="font-display text-[18px] font-semibold text-white mb-4">Friends Who've Seen This</h2>
+          <h2 className="font-display text-[18px] font-semibold mb-4" style={{ color: 'var(--text-primary)' }}>Friends Who've Seen This</h2>
           <div className="flex gap-4">
             {['SK', 'MR', 'JD'].map((initials, i) => (
               <div key={i} className="flex flex-col items-center">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#C41E3A] to-[#9B1830] rounded-xl flex items-center justify-center text-white font-bold mb-1 border-2 border-[#080808] shadow-lg shadow-[#C41E3A]/20">
+                <div className="w-12 h-12 bg-gradient-to-br from-[#C41E3A] to-[#9B1830] rounded-xl flex items-center justify-center text-white font-bold mb-1 shadow-lg shadow-[#C41E3A]/20" style={{ border: '2px solid var(--bg)' }}>
                   {initials}
                 </div>
                 <StarRating rating={4 + (i % 2)} size="sm" />

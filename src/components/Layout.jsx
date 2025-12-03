@@ -4,7 +4,7 @@ import MobileNav from './MobileNav'
 
 function Layout() {
   return (
-    <div className="min-h-screen bg-[#050505] text-[#F5F5F5] overflow-x-hidden">
+    <div className="min-h-screen overflow-x-hidden" style={{ backgroundColor: 'var(--bg)', color: 'var(--text-primary)' }}>
       <Header />
       <main>
         <Outlet />

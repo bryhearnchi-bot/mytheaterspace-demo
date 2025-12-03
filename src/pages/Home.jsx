@@ -119,11 +119,17 @@ function Home() {
             alt={FEATURED_SHOW.title}
             className="w-full h-full object-cover"
           />
-          {/* Layered gradients for depth */}
+          {/* Layered gradients for depth - always dark for cinematic effect */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-[#080808]/50 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#080808]/30 to-transparent" />
         </div>
+
+        {/* Blend transition into page background */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none"
+          style={{ background: 'linear-gradient(to bottom, transparent, var(--bg))' }}
+        />
 
         {/* Content */}
         <div className="absolute bottom-0 left-0 right-0 p-6 pb-10 max-w-lg mx-auto w-full">
@@ -193,19 +199,19 @@ function Home() {
           className="card p-4 -mt-6 mb-8 flex items-center justify-between"
         >
           <div className="flex items-center gap-3">
-            <div className="w-11 h-11 rounded-xl bg-[#1A1A1A] flex items-center justify-center text-[#C41E3A]">
+            <div className="w-11 h-11 rounded-xl flex items-center justify-center text-[#C41E3A]" style={{ backgroundColor: 'var(--surface-highlight)' }}>
               <Trophy size={20} strokeWidth={1.5} />
             </div>
             <div>
-              <p className="text-[10px] text-[#5A5A5A] uppercase tracking-[0.15em] font-semibold mb-0.5">
+              <p className="text-[10px] uppercase tracking-[0.15em] font-semibold mb-0.5" style={{ color: 'var(--text-muted)' }}>
                 My Playbill
               </p>
-              <p className="text-[15px] font-semibold text-white">
+              <p className="text-[15px] font-semibold" style={{ color: 'var(--text-primary)' }}>
                 {currentUser.stats.showsThisYear} Shows this Season
               </p>
             </div>
           </div>
-          <Link to="/diary" className="p-2 -mr-2 text-[#5A5A5A] hover:text-white transition-colors">
+          <Link to="/diary" className="p-2 -mr-2 transition-colors" style={{ color: 'var(--text-muted)' }}>
             <ChevronRight size={18} />
           </Link>
         </motion.div>
@@ -213,12 +219,12 @@ function Home() {
         {/* Trending Shows */}
         <section className="mb-10">
           <div className="flex items-baseline justify-between mb-5">
-            <h2 className="font-display text-[22px] font-semibold text-white">
+            <h2 className="font-display text-[22px] font-semibold" style={{ color: 'var(--text-primary)' }}>
               Trending Now
             </h2>
             <Link
               to="/discover"
-              className="text-[11px] text-[#C41E3A] uppercase font-bold tracking-[0.12em] hover:text-white transition-colors"
+              className="text-[11px] text-[#C41E3A] uppercase font-bold tracking-[0.12em] transition-colors"
             >
               View All
             </Link>
@@ -235,7 +241,7 @@ function Home() {
                   className="flex-shrink-0 w-[140px] group"
                 >
                   <Link to={`/show/${show.id}`}>
-                    <div className="relative aspect-poster rounded-xl overflow-hidden mb-3 bg-[#131313] hover-lift">
+                    <div className="relative aspect-poster rounded-xl overflow-hidden mb-3 hover-lift" style={{ backgroundColor: 'var(--surface)' }}>
                       <img
                         src={show.image}
                         alt={show.title}
@@ -245,7 +251,7 @@ function Home() {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
                       {/* Rating badge */}
-                      <div className="absolute top-2 right-2 px-2 py-1 rounded-md bg-black/50 backdrop-blur-md border border-white/10 flex items-center gap-1">
+                      <div className="absolute top-2 right-2 px-2 py-1 rounded-md bg-black/50 backdrop-blur-md flex items-center gap-1" style={{ border: '1px solid var(--border)' }}>
                         <Star size={9} fill="#D4A84B" color="#D4A84B" />
                         <span className="text-[10px] font-bold text-[#D4A84B]">{show.rating}</span>
                       </div>
@@ -258,10 +264,10 @@ function Home() {
                       </div>
                     </div>
 
-                    <h3 className="font-display font-semibold text-[14px] leading-tight mb-1 text-white/90 group-hover:text-white transition-colors line-clamp-2">
+                    <h3 className="font-display font-semibold text-[14px] leading-tight mb-1 transition-colors line-clamp-2" style={{ color: 'var(--text-primary)' }}>
                       {show.title}
                     </h3>
-                    <p className="text-[11px] text-[#5A5A5A]">{show.theater}</p>
+                    <p className="text-[11px]" style={{ color: 'var(--text-muted)' }}>{show.theater}</p>
                   </Link>
                 </motion.div>
               ))}
@@ -272,7 +278,7 @@ function Home() {
         {/* Community Reviews */}
         <section>
           <div className="flex items-baseline justify-between mb-5">
-            <h2 className="font-display text-[22px] font-semibold text-white">
+            <h2 className="font-display text-[22px] font-semibold" style={{ color: 'var(--text-primary)' }}>
               From the Community
             </h2>
           </div>
@@ -289,7 +295,7 @@ function Home() {
                 <div className="flex gap-3">
                   {/* Avatar */}
                   <div className="relative flex-shrink-0">
-                    <div className="w-11 h-11 rounded-full overflow-hidden bg-[#1A1A1A] border border-white/10">
+                    <div className="w-11 h-11 rounded-full overflow-hidden" style={{ backgroundColor: 'var(--surface-highlight)', border: '1px solid var(--border)' }}>
                       <img
                         src={review.user.avatar}
                         alt={review.user.name}
@@ -297,7 +303,7 @@ function Home() {
                       />
                     </div>
                     {review.user.verified && (
-                      <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-[#C41E3A] rounded-full flex items-center justify-center border-2 border-[#131313]">
+                      <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-[#C41E3A] rounded-full flex items-center justify-center" style={{ border: '2px solid var(--surface)' }}>
                         <svg width="8" height="8" viewBox="0 0 24 24" fill="white">
                           <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                         </svg>
@@ -309,31 +315,31 @@ function Home() {
                   <div className="flex-1 min-w-0">
                     <div className="flex justify-between items-start mb-1.5">
                       <div>
-                        <h4 className="font-semibold text-[14px] text-white">{review.user.name}</h4>
-                        <p className="text-[11px] text-[#5A5A5A]">
+                        <h4 className="font-semibold text-[14px]" style={{ color: 'var(--text-primary)' }}>{review.user.name}</h4>
+                        <p className="text-[11px]" style={{ color: 'var(--text-muted)' }}>
                           reviewed{' '}
-                          <Link to={`/show/${review.showId}`} className="text-[#C41E3A] hover:text-white transition-colors">
+                          <Link to={`/show/${review.showId}`} className="text-[#C41E3A] transition-colors">
                             {review.show}
                           </Link>
                         </p>
                       </div>
-                      <span className="text-[11px] text-[#5A5A5A]">{review.time}</span>
+                      <span className="text-[11px]" style={{ color: 'var(--text-muted)' }}>{review.time}</span>
                     </div>
 
                     <div className="mb-2.5">
                       <StarRating rating={review.rating} />
                     </div>
 
-                    <p className="text-[13px] text-[#A8A8A8] leading-relaxed mb-3.5">
+                    <p className="text-[13px] leading-relaxed mb-3.5" style={{ color: 'var(--text-secondary)' }}>
                       "{review.text}"
                     </p>
 
                     <div className="flex gap-4">
-                      <button className="flex items-center gap-1.5 text-[11px] text-[#5A5A5A] hover:text-[#C41E3A] transition-colors group">
+                      <button className="flex items-center gap-1.5 text-[11px] hover:text-[#C41E3A] transition-colors group" style={{ color: 'var(--text-muted)' }}>
                         <Heart size={14} strokeWidth={1.5} className="group-hover:fill-[#C41E3A]" />
                         <span>{review.likes}</span>
                       </button>
-                      <button className="flex items-center gap-1.5 text-[11px] text-[#5A5A5A] hover:text-white transition-colors">
+                      <button className="flex items-center gap-1.5 text-[11px] transition-colors" style={{ color: 'var(--text-muted)' }}>
                         <MessageCircle size={14} strokeWidth={1.5} />
                         <span>Reply</span>
                       </button>

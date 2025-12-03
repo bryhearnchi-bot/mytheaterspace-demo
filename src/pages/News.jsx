@@ -32,19 +32,19 @@ function News() {
           animate={{ opacity: 1, y: 0 }}
         >
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-11 h-11 rounded-xl bg-[#1A1A1A] flex items-center justify-center text-[#C41E3A]">
+            <div className="w-11 h-11 rounded-xl flex items-center justify-center text-[#C41E3A]" style={{ backgroundColor: 'var(--surface-highlight)' }}>
               <Newspaper size={20} strokeWidth={1.5} />
             </div>
             <div>
-              <p className="text-[10px] text-[#5A5A5A] uppercase tracking-[0.15em] font-semibold mb-0.5">
+              <p className="text-[10px] uppercase tracking-[0.15em] font-semibold mb-0.5" style={{ color: 'var(--text-muted)' }}>
                 Theater News
               </p>
-              <h1 className="font-display text-[24px] font-semibold text-white">
+              <h1 className="font-display text-[24px] font-semibold" style={{ color: 'var(--text-primary)' }}>
                 What's Happening
               </h1>
             </div>
           </div>
-          <p className="text-[#A8A8A8] text-[13px] leading-relaxed">
+          <p className="text-[13px] leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
             The latest from Broadway, West End, and theaters around the world.
           </p>
 
@@ -59,8 +59,13 @@ function News() {
                   className={`flex items-center gap-2 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.1em] rounded-full transition-all duration-300 flex-shrink-0 ${
                     activeCategory === cat.id
                       ? 'bg-[#C41E3A] text-white shadow-lg shadow-[#C41E3A]/20'
-                      : 'bg-[#1A1A1A] text-[#5A5A5A] hover:text-white border border-white/5'
+                      : ''
                   }`}
+                  style={activeCategory !== cat.id ? {
+                    backgroundColor: 'var(--surface-highlight)',
+                    color: 'var(--text-muted)',
+                    border: '1px solid var(--border)'
+                  } : {}}
                 >
                   <Icon size={14} strokeWidth={1.5} />
                   {cat.label}
@@ -86,23 +91,23 @@ function News() {
               alt={featuredNews.title}
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#131313] via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[var(--surface)] via-transparent to-transparent" />
             <span className="absolute top-3 left-3 badge badge-crimson">
               Featured
             </span>
           </div>
           {/* Content */}
           <div className="p-4">
-            <h2 className="font-display text-[18px] font-semibold text-white mb-2 leading-tight">
+            <h2 className="font-display text-[18px] font-semibold mb-2 leading-tight" style={{ color: 'var(--text-primary)' }}>
               {featuredNews.title}
             </h2>
-            <p className="text-[#A8A8A8] text-[13px] leading-relaxed mb-3 line-clamp-2">
+            <p className="text-[13px] leading-relaxed mb-3 line-clamp-2" style={{ color: 'var(--text-secondary)' }}>
               {featuredNews.excerpt}
             </p>
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2 text-[11px] text-[#5A5A5A]">
-                <span className="font-medium text-[#A8A8A8]">{featuredNews.source}</span>
-                <span className="w-1 h-1 bg-[#3A3A3A] rounded-full" />
+              <div className="flex items-center gap-2 text-[11px]" style={{ color: 'var(--text-muted)' }}>
+                <span className="font-medium" style={{ color: 'var(--text-secondary)' }}>{featuredNews.source}</span>
+                <span className="w-1 h-1 rounded-full" style={{ backgroundColor: 'var(--text-muted)' }} />
                 <Clock size={12} />
                 <span>{featuredNews.timeAgo}</span>
               </div>
@@ -127,7 +132,7 @@ function News() {
               className="card p-3.5 flex gap-3 hover:border-[#C41E3A]/20 transition-all duration-300 group"
             >
               {/* Thumbnail */}
-              <div className="w-20 h-20 rounded-lg overflow-hidden bg-[#1A1A1A] flex-shrink-0">
+              <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0" style={{ backgroundColor: 'var(--surface-highlight)' }}>
                 <img
                   src={NEWS_IMAGES[item.id] || NEWS_IMAGES[1]}
                   alt={item.title}
@@ -136,12 +141,12 @@ function News() {
               </div>
               {/* Content */}
               <div className="flex-1 min-w-0 flex flex-col justify-center">
-                <h3 className="font-display text-[14px] font-semibold text-white/90 group-hover:text-white transition-colors leading-snug mb-1.5 line-clamp-2">
+                <h3 className="font-display text-[14px] font-semibold transition-colors leading-snug mb-1.5 line-clamp-2" style={{ color: 'var(--text-primary)' }}>
                   {item.title}
                 </h3>
-                <div className="flex items-center gap-2 text-[10px] text-[#5A5A5A]">
-                  <span className="text-[#A8A8A8]">{item.source}</span>
-                  <span className="w-1 h-1 bg-[#3A3A3A] rounded-full" />
+                <div className="flex items-center gap-2 text-[10px]" style={{ color: 'var(--text-muted)' }}>
+                  <span style={{ color: 'var(--text-secondary)' }}>{item.source}</span>
+                  <span className="w-1 h-1 rounded-full" style={{ backgroundColor: 'var(--text-muted)' }} />
                   <Clock size={10} />
                   <span>{item.timeAgo}</span>
                 </div>

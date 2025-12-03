@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Search, Menu, X, ChevronRight } from 'lucide-react'
+import { Search, Menu, X, ChevronRight, Sun, Moon } from 'lucide-react'
 import { currentUser } from '../data/mockData'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useTheme } from '../context/ThemeContext'
 
 const MENU_ITEMS = [
   { label: 'Broadway', to: '/discover', desc: 'Current Broadway shows' },
@@ -15,6 +16,7 @@ const MENU_ITEMS = [
 function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const { isDark, toggleTheme } = useTheme()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,7 +48,8 @@ function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-[60] bg-[#080808]/98 backdrop-blur-2xl flex flex-col"
+            className="fixed inset-0 z-[60] backdrop-blur-2xl flex flex-col"
+            style={{ backgroundColor: 'var(--menu-overlay-bg)' }}
           >
             {/* Close button */}
             <motion.button
@@ -54,7 +57,8 @@ function Header() {
               animate={{ opacity: 1, rotate: 0 }}
               transition={{ delay: 0.1 }}
               onClick={() => setMenuOpen(false)}
-              className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center text-[#5A5A5A] hover:text-white transition-colors"
+              className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center transition-colors"
+              style={{ color: 'var(--text-muted)' }}
             >
               <X size={24} strokeWidth={1.5} />
             </motion.button>
@@ -67,7 +71,7 @@ function Header() {
               className="px-8 pt-8"
             >
               <Link to="/" onClick={() => setMenuOpen(false)} className="inline-block">
-                <h1 className="font-display font-bold text-xl text-white">
+                <h1 className="font-display font-bold text-xl" style={{ color: 'var(--text-primary)' }}>
                   My <span className="text-[#C41E3A] italic">Theatre</span>Space
                 </h1>
               </Link>
@@ -86,15 +90,16 @@ function Header() {
                     <Link
                       to={item.to}
                       onClick={() => setMenuOpen(false)}
-                      className="group flex items-center justify-between py-4 border-b border-white/5 hover:border-[#C41E3A]/30 transition-colors"
+                      className="group flex items-center justify-between py-4 border-b hover:border-[#C41E3A]/30 transition-colors"
+                      style={{ borderColor: 'var(--border)' }}
                     >
                       <div>
-                        <h2 className="font-display text-[28px] font-semibold text-white group-hover:text-[#C41E3A] transition-colors">
+                        <h2 className="font-display text-[28px] font-semibold group-hover:text-[#C41E3A] transition-colors" style={{ color: 'var(--text-primary)' }}>
                           {item.label}
                         </h2>
-                        <p className="text-[12px] text-[#5A5A5A] mt-0.5">{item.desc}</p>
+                        <p className="text-[12px] mt-0.5" style={{ color: 'var(--text-muted)' }}>{item.desc}</p>
                       </div>
-                      <ChevronRight size={20} className="text-[#3A3A3A] group-hover:text-[#C41E3A] group-hover:translate-x-1 transition-all" />
+                      <ChevronRight size={20} className="group-hover:text-[#C41E3A] group-hover:translate-x-1 transition-all" style={{ color: 'var(--text-muted)' }} />
                     </Link>
                   </motion.div>
                 ))}
@@ -106,22 +111,49 @@ function Header() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="px-8 pb-10 pt-6 border-t border-white/5"
+              className="px-8 pb-10 pt-6 border-t"
+              style={{ borderColor: 'var(--border)' }}
             >
-              <div className="flex gap-8 text-[12px]">
-                <Link
-                  to="/profile"
-                  onClick={() => setMenuOpen(false)}
-                  className="text-[#5A5A5A] hover:text-white transition-colors"
+              <div className="flex items-center justify-between">
+                <div className="flex gap-8 text-[12px]">
+                  <Link
+                    to="/profile"
+                    onClick={() => setMenuOpen(false)}
+                    className="transition-colors"
+                    style={{ color: 'var(--text-muted)' }}
+                  >
+                    Settings
+                  </Link>
+                  <a href="#" className="transition-colors" style={{ color: 'var(--text-muted)' }}>
+                    Support
+                  </a>
+                  <a href="#" className="transition-colors" style={{ color: 'var(--text-muted)' }}>
+                    About
+                  </a>
+                </div>
+
+                {/* Theme Toggle */}
+                <button
+                  onClick={toggleTheme}
+                  className="flex items-center gap-2 px-3 py-2 rounded-full transition-all"
+                  style={{
+                    backgroundColor: 'var(--surface-highlight)',
+                    border: '1px solid var(--border)'
+                  }}
                 >
-                  Settings
-                </Link>
-                <a href="#" className="text-[#5A5A5A] hover:text-white transition-colors">
-                  Support
-                </a>
-                <a href="#" className="text-[#5A5A5A] hover:text-white transition-colors">
-                  About
-                </a>
+                  <Sun size={14} className={`transition-colors ${isDark ? 'text-[#5A5A5A]' : 'text-[#D4A84B]'}`} />
+                  <div
+                    className="relative w-10 h-5 rounded-full transition-colors"
+                    style={{ backgroundColor: isDark ? 'var(--text-muted)' : '#C41E3A' }}
+                  >
+                    <div
+                      className={`absolute top-0.5 w-4 h-4 rounded-full bg-white shadow-sm transition-transform duration-200 ${
+                        isDark ? 'left-0.5' : 'left-[22px]'
+                      }`}
+                    />
+                  </div>
+                  <Moon size={14} className={`transition-colors ${isDark ? 'text-[#D4A84B]' : 'text-[#8A8A8A]'}`} />
+                </button>
               </div>
             </motion.div>
           </motion.div>

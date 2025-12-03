@@ -34,7 +34,8 @@ function Add() {
       <div className="px-5 py-4 max-w-lg mx-auto">
         <Link
           to="/"
-          className="inline-flex items-center gap-2 text-[13px] text-[#5A5A5A] hover:text-white transition-colors"
+          className="inline-flex items-center gap-2 text-[13px] transition-colors"
+          style={{ color: 'var(--text-muted)' }}
         >
           <ArrowLeft className="w-4 h-4" />
           Cancel
@@ -56,22 +57,27 @@ function Add() {
                   <Camera size={24} className="text-white" strokeWidth={1.5} />
                 </div>
               </div>
-              <h1 className="font-display text-[24px] font-semibold text-white mb-2 text-center">
+              <h1 className="font-display text-[24px] font-semibold mb-2 text-center" style={{ color: 'var(--text-primary)' }}>
                 Log a Show
               </h1>
-              <p className="text-[#5A5A5A] text-center text-[13px] mb-8">
+              <p className="text-center text-[13px] mb-8" style={{ color: 'var(--text-muted)' }}>
                 Search for a show you've seen
               </p>
 
               {/* Search */}
               <div className="relative mb-6">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#5A5A5A]" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5" style={{ color: 'var(--text-muted)' }} />
                 <input
                   type="text"
                   placeholder="Search for a show..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 bg-[#131313] border border-white/10 rounded-full text-white placeholder:text-[#5A5A5A] focus:outline-none focus:border-[#C41E3A]/50 transition-colors"
+                  className="w-full pl-12 pr-4 py-3 rounded-full focus:outline-none focus:border-[#C41E3A]/50 transition-colors"
+                  style={{
+                    backgroundColor: 'var(--surface)',
+                    border: '1px solid var(--border)',
+                    color: 'var(--text-primary)'
+                  }}
                   autoFocus
                 />
               </div>
@@ -88,7 +94,7 @@ function Add() {
                         onClick={() => handleSelectShow(show)}
                         className="w-full card p-3 flex items-center gap-3 hover:border-[#C41E3A]/20 transition-all duration-300 text-left"
                       >
-                        <div className="w-11 h-[60px] rounded-lg overflow-hidden bg-[#1A1A1A] flex-shrink-0">
+                        <div className="w-11 h-[60px] rounded-lg overflow-hidden flex-shrink-0" style={{ backgroundColor: 'var(--surface-highlight)' }}>
                           <img
                             src={getShowImage(show.id)}
                             alt={show.title}
@@ -96,13 +102,13 @@ function Add() {
                           />
                         </div>
                         <div>
-                          <h3 className="font-display text-[14px] font-semibold text-white">{show.title}</h3>
-                          <p className="text-[11px] text-[#5A5A5A]">{show.type} • {show.venue}</p>
+                          <h3 className="font-display text-[14px] font-semibold" style={{ color: 'var(--text-primary)' }}>{show.title}</h3>
+                          <p className="text-[11px]" style={{ color: 'var(--text-muted)' }}>{show.type} • {show.venue}</p>
                         </div>
                       </motion.button>
                     ))
                   ) : (
-                    <div className="text-center py-8 text-[#5A5A5A] text-[13px]">
+                    <div className="text-center py-8 text-[13px]" style={{ color: 'var(--text-muted)' }}>
                       No shows found. Try a different search.
                     </div>
                   )}
@@ -110,9 +116,9 @@ function Add() {
               )}
 
               {/* Can't find */}
-              <div className="text-center mt-8 pt-8 border-t border-white/5">
-                <p className="text-[12px] text-[#5A5A5A] mb-2">Can't find what you're looking for?</p>
-                <button className="text-[#C41E3A] text-[11px] font-bold uppercase tracking-[0.12em] hover:text-white transition-colors">
+              <div className="text-center mt-8 pt-8" style={{ borderTop: '1px solid var(--border)' }}>
+                <p className="text-[12px] mb-2" style={{ color: 'var(--text-muted)' }}>Can't find what you're looking for?</p>
+                <button className="text-[#C41E3A] text-[11px] font-bold uppercase tracking-[0.12em] transition-colors">
                   Add a new show manually
                 </button>
               </div>
@@ -127,13 +133,13 @@ function Add() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
             >
-              <h1 className="font-display text-[24px] font-semibold text-white mb-6 text-center">
+              <h1 className="font-display text-[24px] font-semibold mb-6 text-center" style={{ color: 'var(--text-primary)' }}>
                 Log Your Experience
               </h1>
 
               {/* Selected Show */}
               <div className="card p-4 flex items-center gap-4 mb-8">
-                <div className="w-14 h-20 rounded-lg overflow-hidden bg-[#1A1A1A] flex-shrink-0">
+                <div className="w-14 h-20 rounded-lg overflow-hidden flex-shrink-0" style={{ backgroundColor: 'var(--surface-highlight)' }}>
                   <img
                     src={getShowImage(selectedShow.id)}
                     alt={selectedShow.title}
@@ -141,14 +147,14 @@ function Add() {
                   />
                 </div>
                 <div>
-                  <h3 className="font-display text-[18px] font-semibold text-white">{selectedShow.title}</h3>
-                  <p className="text-[12px] text-[#5A5A5A]">{selectedShow.type}</p>
+                  <h3 className="font-display text-[18px] font-semibold" style={{ color: 'var(--text-primary)' }}>{selectedShow.title}</h3>
+                  <p className="text-[12px]" style={{ color: 'var(--text-muted)' }}>{selectedShow.type}</p>
                 </div>
               </div>
 
               {/* Rating */}
               <div className="mb-6">
-                <label className="block text-[11px] font-semibold text-[#5A5A5A] uppercase tracking-[0.12em] mb-3">
+                <label className="block text-[11px] font-semibold uppercase tracking-[0.12em] mb-3" style={{ color: 'var(--text-muted)' }}>
                   Your Rating
                 </label>
                 <div className="flex justify-center">
@@ -158,7 +164,7 @@ function Add() {
 
               {/* Date */}
               <div className="mb-6">
-                <label className="block text-[11px] font-semibold text-[#5A5A5A] uppercase tracking-[0.12em] mb-2">
+                <label className="block text-[11px] font-semibold uppercase tracking-[0.12em] mb-2" style={{ color: 'var(--text-muted)' }}>
                   <Calendar className="w-3 h-3 inline mr-2" />
                   When did you see it?
                 </label>
@@ -166,26 +172,36 @@ function Add() {
                   type="date"
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
-                  className="w-full px-4 py-3 bg-[#131313] border border-white/10 rounded-xl text-white focus:outline-none focus:border-[#C41E3A]/50 transition-colors"
+                  className="w-full px-4 py-3 rounded-xl focus:outline-none focus:border-[#C41E3A]/50 transition-colors"
+                  style={{
+                    backgroundColor: 'var(--surface)',
+                    border: '1px solid var(--border)',
+                    color: 'var(--text-primary)'
+                  }}
                 />
               </div>
 
               {/* Venue */}
               <div className="mb-6">
-                <label className="block text-[11px] font-semibold text-[#5A5A5A] uppercase tracking-[0.12em] mb-2">
+                <label className="block text-[11px] font-semibold uppercase tracking-[0.12em] mb-2" style={{ color: 'var(--text-muted)' }}>
                   <MapPin className="w-3 h-3 inline mr-2" />
                   Venue
                 </label>
                 <input
                   type="text"
                   defaultValue={selectedShow.venue}
-                  className="w-full px-4 py-3 bg-[#131313] border border-white/10 rounded-xl text-white focus:outline-none focus:border-[#C41E3A]/50 transition-colors"
+                  className="w-full px-4 py-3 rounded-xl focus:outline-none focus:border-[#C41E3A]/50 transition-colors"
+                  style={{
+                    backgroundColor: 'var(--surface)',
+                    border: '1px solid var(--border)',
+                    color: 'var(--text-primary)'
+                  }}
                 />
               </div>
 
               {/* Notes */}
               <div className="mb-8">
-                <label className="block text-[11px] font-semibold text-[#5A5A5A] uppercase tracking-[0.12em] mb-2">
+                <label className="block text-[11px] font-semibold uppercase tracking-[0.12em] mb-2" style={{ color: 'var(--text-muted)' }}>
                   Notes (optional)
                 </label>
                 <textarea
@@ -193,7 +209,12 @@ function Add() {
                   onChange={(e) => setNotes(e.target.value)}
                   placeholder="What did you think? Any memorable moments?"
                   rows={4}
-                  className="w-full px-4 py-3 bg-[#131313] border border-white/10 rounded-xl text-white placeholder:text-[#5A5A5A] focus:outline-none focus:border-[#C41E3A]/50 transition-colors resize-none"
+                  className="w-full px-4 py-3 rounded-xl focus:outline-none focus:border-[#C41E3A]/50 transition-colors resize-none"
+                  style={{
+                    backgroundColor: 'var(--surface)',
+                    border: '1px solid var(--border)',
+                    color: 'var(--text-primary)'
+                  }}
                 />
               </div>
 
@@ -235,10 +256,10 @@ function Add() {
               >
                 <Check className="w-8 h-8 text-white" />
               </motion.div>
-              <h1 className="font-display text-[24px] font-semibold text-white mb-2">
+              <h1 className="font-display text-[24px] font-semibold mb-2" style={{ color: 'var(--text-primary)' }}>
                 Added to Your Diary!
               </h1>
-              <p className="text-[#5A5A5A] text-[13px] mb-8">
+              <p className="text-[13px] mb-8" style={{ color: 'var(--text-muted)' }}>
                 {selectedShow?.title} has been logged.
               </p>
               <div className="flex gap-3 justify-center">

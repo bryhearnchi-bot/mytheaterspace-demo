@@ -22,19 +22,19 @@ function Profile() {
             className="flex items-start gap-4"
           >
             {/* Avatar */}
-            <div className="w-20 h-20 bg-gradient-to-br from-[#C41E3A] to-[#9B1830] rounded-2xl flex items-center justify-center text-white text-2xl font-bold flex-shrink-0 border-4 border-[#080808] shadow-xl shadow-[#C41E3A]/20">
+            <div className="w-20 h-20 bg-gradient-to-br from-[#C41E3A] to-[#9B1830] rounded-2xl flex items-center justify-center text-white text-2xl font-bold flex-shrink-0 shadow-xl shadow-[#C41E3A]/20" style={{ border: '4px solid var(--bg)' }}>
               {currentUser.initials}
             </div>
             {/* Info */}
             <div className="flex-1">
               <div className="flex items-start justify-between">
                 <div>
-                  <h1 className="font-display text-[24px] font-semibold text-white">
+                  <h1 className="font-display text-[24px] font-semibold" style={{ color: 'var(--text-primary)' }}>
                     {currentUser.name}
                   </h1>
-                  <p className="text-[#5A5A5A] text-[13px]">Theater enthusiast since 2022</p>
+                  <p className="text-[13px]" style={{ color: 'var(--text-muted)' }}>Theater enthusiast since 2022</p>
                 </div>
-                <button className="w-9 h-9 rounded-xl bg-[#1A1A1A] border border-white/10 flex items-center justify-center text-[#5A5A5A] hover:text-white transition-colors">
+                <button className="w-9 h-9 rounded-xl flex items-center justify-center transition-colors" style={{ backgroundColor: 'var(--surface-highlight)', border: '1px solid var(--border)', color: 'var(--text-muted)' }}>
                   <Settings size={16} strokeWidth={1.5} />
                 </button>
               </div>
@@ -55,8 +55,8 @@ function Profile() {
               { value: currentUser.stats.avgRating, label: 'Avg Rating' },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
-                <div className="font-display text-xl font-bold text-white">{stat.value}</div>
-                <div className="text-[10px] text-[#5A5A5A] uppercase tracking-[0.1em] mt-0.5">{stat.label}</div>
+                <div className="font-display text-xl font-bold" style={{ color: 'var(--text-primary)' }}>{stat.value}</div>
+                <div className="text-[10px] uppercase tracking-[0.1em] mt-0.5" style={{ color: 'var(--text-muted)' }}>{stat.label}</div>
               </div>
             ))}
           </motion.div>
@@ -74,7 +74,7 @@ function Profile() {
         >
           <div className="flex items-center gap-2 mb-4">
             <Award className="w-4 h-4 text-[#D4A84B]" />
-            <h2 className="font-display text-[18px] font-semibold text-white">Achievements</h2>
+            <h2 className="font-display text-[18px] font-semibold" style={{ color: 'var(--text-primary)' }}>Achievements</h2>
           </div>
           <div className="flex gap-3 overflow-x-auto hide-scrollbar pb-2 -mx-5 px-5">
             {['First Show', 'Musical Lover', '10 Shows', 'Reviewer', 'Early Adopter'].map((badge) => (
@@ -83,7 +83,7 @@ function Profile() {
                 className="flex-shrink-0 card px-4 py-3 text-center min-w-[100px]"
               >
                 <Star className="w-5 h-5 fill-[#D4A84B] text-[#D4A84B] mx-auto mb-1" />
-                <span className="text-[10px] text-[#A8A8A8] font-medium">{badge}</span>
+                <span className="text-[10px] font-medium" style={{ color: 'var(--text-secondary)' }}>{badge}</span>
               </div>
             ))}
           </div>
@@ -100,9 +100,9 @@ function Profile() {
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
                 <Star className="w-4 h-4 text-[#C41E3A]" />
-                <h2 className="font-display text-[18px] font-semibold text-white">Favorites</h2>
+                <h2 className="font-display text-[18px] font-semibold" style={{ color: 'var(--text-primary)' }}>Favorites</h2>
               </div>
-              <Link to="/rankings" className="text-[11px] text-[#C41E3A] uppercase font-bold tracking-[0.12em] hover:text-white transition-colors">
+              <Link to="/rankings" className="text-[11px] text-[#C41E3A] uppercase font-bold tracking-[0.12em] transition-colors">
                 View all
               </Link>
             </div>
@@ -124,9 +124,9 @@ function Profile() {
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
               <Calendar className="w-4 h-4 text-[#C41E3A]" />
-              <h2 className="font-display text-[18px] font-semibold text-white">Recently Seen</h2>
+              <h2 className="font-display text-[18px] font-semibold" style={{ color: 'var(--text-primary)' }}>Recently Seen</h2>
             </div>
-            <Link to="/diary" className="text-[11px] text-[#C41E3A] uppercase font-bold tracking-[0.12em] hover:text-white transition-colors">
+            <Link to="/diary" className="text-[11px] text-[#C41E3A] uppercase font-bold tracking-[0.12em] transition-colors">
               View diary
             </Link>
           </div>
@@ -146,7 +146,7 @@ function Profile() {
         >
           <div className="flex items-center gap-2 mb-4">
             <TrendingUp className="w-4 h-4 text-[#C41E3A]" />
-            <h2 className="font-display text-[18px] font-semibold text-white">Your Stats</h2>
+            <h2 className="font-display text-[18px] font-semibold" style={{ color: 'var(--text-primary)' }}>Your Stats</h2>
           </div>
           <div className="grid grid-cols-2 gap-3">
             {[
@@ -155,9 +155,9 @@ function Profile() {
               { value: '4.2', label: 'Avg Rating' },
               { value: '3', label: 'Rewatches' },
             ].map((stat) => (
-              <div key={stat.label} className="bg-[#1A1A1A] border border-white/5 p-4 rounded-xl text-center">
-                <div className="text-xl font-display font-bold text-white">{stat.value}</div>
-                <div className="text-[10px] text-[#5A5A5A] mt-0.5">{stat.label}</div>
+              <div key={stat.label} className="p-4 rounded-xl text-center" style={{ backgroundColor: 'var(--surface-highlight)', border: '1px solid var(--border)' }}>
+                <div className="text-xl font-display font-bold" style={{ color: 'var(--text-primary)' }}>{stat.value}</div>
+                <div className="text-[10px] mt-0.5" style={{ color: 'var(--text-muted)' }}>{stat.label}</div>
               </div>
             ))}
           </div>

@@ -69,7 +69,7 @@ function Rankings() {
       </div>
 
       {/* Poster Thumbnail */}
-      <div className="w-11 h-[60px] rounded-lg overflow-hidden bg-[#1A1A1A] flex-shrink-0">
+      <div className="w-11 h-[60px] rounded-lg overflow-hidden flex-shrink-0" style={{ backgroundColor: 'var(--surface-highlight)' }}>
         <img
           src={getShowImage(show.id)}
           alt={show.title}
@@ -81,14 +81,15 @@ function Rankings() {
       <div className="flex-1 min-w-0">
         <Link
           to={`/show/${show.id}`}
-          className="font-display text-[14px] font-semibold text-white/90 hover:text-white transition-colors block truncate"
+          className="font-display text-[14px] font-semibold transition-colors block truncate"
+          style={{ color: 'var(--text-primary)' }}
         >
           {show.title}
         </Link>
         <div className="flex items-center gap-2 mt-0.5">
-          <span className="text-[11px] text-[#5A5A5A]">{show.type}</span>
-          <span className="w-1 h-1 bg-[#3A3A3A] rounded-full" />
-          <span className="text-[11px] text-[#5A5A5A] truncate">{show.venue}</span>
+          <span className="text-[11px]" style={{ color: 'var(--text-muted)' }}>{show.type}</span>
+          <span className="w-1 h-1 rounded-full" style={{ backgroundColor: 'var(--text-muted)' }} />
+          <span className="text-[11px] truncate" style={{ color: 'var(--text-muted)' }}>{show.venue}</span>
         </div>
       </div>
 
@@ -109,20 +110,20 @@ function Rankings() {
         >
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <div className="w-11 h-11 rounded-xl bg-[#1A1A1A] flex items-center justify-center text-[#C41E3A]">
+              <div className="w-11 h-11 rounded-xl flex items-center justify-center text-[#C41E3A]" style={{ backgroundColor: 'var(--surface-highlight)' }}>
                 <Trophy size={20} strokeWidth={1.5} />
               </div>
               <div>
-                <p className="text-[10px] text-[#5A5A5A] uppercase tracking-[0.15em] font-semibold mb-0.5">
+                <p className="text-[10px] uppercase tracking-[0.15em] font-semibold mb-0.5" style={{ color: 'var(--text-muted)' }}>
                   Your Rankings
                 </p>
-                <h1 className="font-display text-[24px] font-semibold text-white">
+                <h1 className="font-display text-[24px] font-semibold" style={{ color: 'var(--text-primary)' }}>
                   Ranked by You
                 </h1>
               </div>
             </div>
           </div>
-          <p className="text-[#A8A8A8] text-[13px] leading-relaxed">
+          <p className="text-[13px] leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
             {compareMode
               ? `Comparing shows ${compareIndex + 1} of ${rankedShows.length - 1}. Pick your favorite!`
               : editMode
@@ -144,12 +145,13 @@ function Rankings() {
           >
             <div className="card p-5">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-display text-[16px] font-semibold text-white">
+                <h3 className="font-display text-[16px] font-semibold" style={{ color: 'var(--text-primary)' }}>
                   Which do you prefer?
                 </h3>
                 <button
                   onClick={exitComparison}
-                  className="w-8 h-8 rounded-lg bg-[#1A1A1A] flex items-center justify-center text-[#5A5A5A] hover:text-white transition-colors"
+                  className="w-8 h-8 rounded-lg flex items-center justify-center transition-colors"
+                  style={{ backgroundColor: 'var(--surface-highlight)', color: 'var(--text-muted)' }}
                 >
                   <X size={16} />
                 </button>
@@ -164,28 +166,28 @@ function Rankings() {
                     onClick={() => handleCompareChoice(idx === 0 ? 'A' : 'B')}
                     className="card p-3 text-left hover:border-[#C41E3A]/40 transition-all duration-300 group"
                   >
-                    <div className="aspect-[3/4] rounded-lg overflow-hidden mb-3 bg-[#1A1A1A]">
+                    <div className="aspect-[3/4] rounded-lg overflow-hidden mb-3" style={{ backgroundColor: 'var(--surface-highlight)' }}>
                       <img
                         src={getShowImage(show.id)}
                         alt={show.title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
-                    <h4 className="font-display text-[14px] font-semibold text-white mb-1 line-clamp-2">
+                    <h4 className="font-display text-[14px] font-semibold mb-1 line-clamp-2" style={{ color: 'var(--text-primary)' }}>
                       {show.title}
                     </h4>
-                    <p className="text-[11px] text-[#5A5A5A]">{show.type}</p>
+                    <p className="text-[11px]" style={{ color: 'var(--text-muted)' }}>{show.type}</p>
                   </motion.button>
                 ))}
               </div>
 
               {/* Progress */}
-              <div className="mt-4 pt-4 border-t border-white/5">
-                <div className="flex items-center justify-between text-[11px] text-[#5A5A5A] mb-2">
+              <div className="mt-4 pt-4" style={{ borderTop: '1px solid var(--border)' }}>
+                <div className="flex items-center justify-between text-[11px] mb-2" style={{ color: 'var(--text-muted)' }}>
                   <span>Progress</span>
                   <span>{compareIndex + 1} / {rankedShows.length - 1}</span>
                 </div>
-                <div className="h-1 bg-[#1A1A1A] rounded-full overflow-hidden">
+                <div className="h-1 rounded-full overflow-hidden" style={{ backgroundColor: 'var(--surface-highlight)' }}>
                   <motion.div
                     className="h-full bg-[#C41E3A]"
                     initial={{ width: 0 }}
@@ -223,7 +225,7 @@ function Rankings() {
                   <RankingItem show={show} index={index} />
 
                   {/* Drag Handle on right */}
-                  <div className="text-[#5A5A5A] hover:text-white transition-colors pl-2">
+                  <div className="transition-colors pl-2" style={{ color: 'var(--text-muted)' }}>
                     <GripVertical size={18} strokeWidth={1.5} />
                   </div>
                 </motion.div>
@@ -301,10 +303,10 @@ function Rankings() {
             <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#C41E3A] to-[#9B1830] flex items-center justify-center mx-auto mb-4 shadow-lg shadow-[#C41E3A]/20">
               <Shuffle size={24} className="text-white" />
             </div>
-            <h3 className="font-display text-[18px] font-semibold text-white mb-2">
+            <h3 className="font-display text-[18px] font-semibold mb-2" style={{ color: 'var(--text-primary)' }}>
               Refine Your Rankings
             </h3>
-            <p className="text-[12px] text-[#5A5A5A] mb-5 max-w-xs mx-auto">
+            <p className="text-[12px] mb-5 max-w-xs mx-auto" style={{ color: 'var(--text-muted)' }}>
               Not sure about the order? Compare shows head-to-head to let the algorithm perfect your list.
             </p>
             <motion.button

@@ -33,17 +33,22 @@ function Discover() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <h1 className="font-display text-[24px] font-semibold text-white text-center mb-6">
+          <h1 className="font-display text-[24px] font-semibold text-center mb-6" style={{ color: 'var(--text-primary)' }}>
             Discover Theater
           </h1>
           <div className="relative">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#5A5A5A]" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5" style={{ color: 'var(--text-muted)' }} />
             <input
               type="text"
               placeholder="Search shows, venues..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 bg-[#131313] border border-white/10 rounded-full text-white placeholder:text-[#5A5A5A] focus:outline-none focus:border-[#C41E3A]/50 transition-colors"
+              className="w-full pl-12 pr-4 py-3 rounded-full focus:outline-none focus:border-[#C41E3A]/50 transition-colors"
+              style={{
+                backgroundColor: 'var(--surface)',
+                border: '1px solid var(--border)',
+                color: 'var(--text-primary)'
+              }}
             />
           </div>
 
@@ -56,8 +61,13 @@ function Discover() {
                 className={`px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.1em] rounded-full transition-all duration-300 ${
                   activeCategory === cat.id
                     ? 'bg-[#C41E3A] text-white shadow-lg shadow-[#C41E3A]/20'
-                    : 'bg-[#1A1A1A] text-[#5A5A5A] hover:text-white border border-white/5'
+                    : ''
                 }`}
+                style={activeCategory !== cat.id ? {
+                  backgroundColor: 'var(--surface-highlight)',
+                  color: 'var(--text-muted)',
+                  border: '1px solid var(--border)'
+                } : {}}
               >
                 {cat.label}
               </button>
@@ -71,7 +81,7 @@ function Discover() {
         {searchQuery ? (
           /* Search Results */
           <div>
-            <h2 className="font-display text-[18px] font-semibold text-white mb-4">
+            <h2 className="font-display text-[18px] font-semibold mb-4" style={{ color: 'var(--text-primary)' }}>
               Results for "{searchQuery}"
             </h2>
             {filteredShows.length > 0 ? (
@@ -82,7 +92,7 @@ function Discover() {
               </div>
             ) : (
               <div className="text-center py-12">
-                <p className="text-[#5A5A5A] text-[13px]">No shows found matching your search.</p>
+                <p className="text-[13px]" style={{ color: 'var(--text-muted)' }}>No shows found matching your search.</p>
               </div>
             )}
           </div>
@@ -98,9 +108,9 @@ function Discover() {
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
                   <TrendingUp className="w-4 h-4 text-[#C41E3A]" />
-                  <h2 className="font-display text-[18px] font-semibold text-white">Trending Now</h2>
+                  <h2 className="font-display text-[18px] font-semibold" style={{ color: 'var(--text-primary)' }}>Trending Now</h2>
                 </div>
-                <button className="text-[11px] text-[#C41E3A] uppercase font-bold tracking-[0.12em] hover:text-white transition-colors">
+                <button className="text-[11px] text-[#C41E3A] uppercase font-bold tracking-[0.12em] transition-colors">
                   View All
                 </button>
               </div>
@@ -120,9 +130,9 @@ function Discover() {
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
                   <Clock className="w-4 h-4 text-[#C41E3A]" />
-                  <h2 className="font-display text-[18px] font-semibold text-white">Recently Added</h2>
+                  <h2 className="font-display text-[18px] font-semibold" style={{ color: 'var(--text-primary)' }}>Recently Added</h2>
                 </div>
-                <button className="text-[11px] text-[#C41E3A] uppercase font-bold tracking-[0.12em] hover:text-white transition-colors">
+                <button className="text-[11px] text-[#C41E3A] uppercase font-bold tracking-[0.12em] transition-colors">
                   View All
                 </button>
               </div>
@@ -142,9 +152,9 @@ function Discover() {
             >
               <div className="flex items-center gap-2 mb-3">
                 <Award className="w-4 h-4 text-[#D4A84B]" />
-                <h2 className="font-display text-[18px] font-semibold text-white">Awards Season</h2>
+                <h2 className="font-display text-[18px] font-semibold" style={{ color: 'var(--text-primary)' }}>Awards Season</h2>
               </div>
-              <p className="text-[#5A5A5A] text-[12px] mb-4">
+              <p className="text-[12px] mb-4" style={{ color: 'var(--text-muted)' }}>
                 Explore this year's Tony Award nominees and winners.
               </p>
               <div className="grid grid-cols-2 gap-4">

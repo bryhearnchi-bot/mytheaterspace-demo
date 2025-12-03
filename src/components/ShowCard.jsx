@@ -71,7 +71,7 @@ export function ShowCard({ show, rank, variant = 'default', className }) {
     >
       <motion.div whileTap={{ scale: 0.97 }}>
         {/* Poster */}
-        <div className="relative aspect-poster rounded-xl overflow-hidden mb-3 bg-[#131313] hover-lift">
+        <div className="relative aspect-poster rounded-xl overflow-hidden mb-3 hover-lift" style={{ backgroundColor: 'var(--surface)' }}>
           <img
             src={image}
             alt={show.title}
@@ -90,7 +90,7 @@ export function ShowCard({ show, rank, variant = 'default', className }) {
 
           {/* Rating Badge */}
           {show.rating && (
-            <div className="absolute top-2 right-2 px-2 py-1 rounded-md bg-black/50 backdrop-blur-md border border-white/10 flex items-center gap-1">
+            <div className="absolute top-2 right-2 px-2 py-1 rounded-md bg-black/50 backdrop-blur-md flex items-center gap-1" style={{ border: '1px solid var(--border)' }}>
               <Star size={9} fill="#D4A84B" color="#D4A84B" />
               <span className="text-[10px] font-bold text-[#D4A84B]">{show.rating}</span>
             </div>
@@ -99,10 +99,10 @@ export function ShowCard({ show, rank, variant = 'default', className }) {
 
         {/* Info */}
         <div>
-          <h3 className="font-display font-semibold text-[14px] leading-tight mb-1 text-white/90 group-hover:text-white transition-colors line-clamp-2">
+          <h3 className="font-display font-semibold text-[14px] leading-tight mb-1 transition-colors line-clamp-2" style={{ color: 'var(--text-primary)' }}>
             {show.title}
           </h3>
-          <p className="text-[11px] text-[#5A5A5A]">{show.venue || show.type}</p>
+          <p className="text-[11px]" style={{ color: 'var(--text-muted)' }}>{show.venue || show.type}</p>
           {show.rating && variant !== 'compact' && (
             <div className="mt-1.5">
               <StarRating rating={show.rating} />
@@ -127,14 +127,14 @@ export function ShowCardCompact({ show, rank }) {
           {rank}
         </span>
       )}
-      <div className="w-11 h-[60px] rounded-lg overflow-hidden bg-[#1A1A1A] flex-shrink-0">
+      <div className="w-11 h-[60px] rounded-lg overflow-hidden flex-shrink-0" style={{ backgroundColor: 'var(--surface-highlight)' }}>
         <img src={image} alt={show.title} className="w-full h-full object-cover" />
       </div>
       <div className="flex-1 min-w-0">
-        <h3 className="font-display text-[14px] font-semibold text-white/90 truncate group-hover:text-white transition-colors">
+        <h3 className="font-display text-[14px] font-semibold truncate transition-colors" style={{ color: 'var(--text-primary)' }}>
           {show.title}
         </h3>
-        <p className="text-[11px] text-[#5A5A5A]">{show.type}</p>
+        <p className="text-[11px]" style={{ color: 'var(--text-muted)' }}>{show.type}</p>
       </div>
       {show.rating && <StarRating rating={show.rating} size="sm" />}
     </Link>

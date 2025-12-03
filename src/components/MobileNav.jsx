@@ -10,7 +10,7 @@ function NavItem({ to, icon: Icon, label }) {
       className={({ isActive }) =>
         cn(
           'flex flex-col items-center justify-center gap-1 w-16 py-2 transition-all duration-200',
-          isActive ? 'text-[#C41E3A]' : 'text-[#5A5A5A] hover:text-[#A8A8A8]'
+          isActive ? 'text-[#C41E3A]' : 'text-[var(--text-muted)] hover:text-[var(--text-secondary)]'
         )
       }
     >
@@ -55,7 +55,7 @@ function MobileNav() {
                 <div className={cn(
                   "relative w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-300",
                   "bg-gradient-to-br from-[#C41E3A] to-[#9B1830]",
-                  "border-4 border-[#080808]",
+                  "border-4 border-[var(--bg)]",
                   "shadow-[0_4px_20px_rgba(196,30,58,0.4)]",
                   isActive && "shadow-[0_4px_30px_rgba(196,30,58,0.6)]"
                 )}>
