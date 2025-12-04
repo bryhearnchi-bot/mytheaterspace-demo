@@ -12,10 +12,7 @@ function Profile() {
     <div className="min-h-screen pb-28 pt-20">
       {/* Header */}
       <section className="relative">
-        {/* Background gradient */}
-        <div className="absolute inset-0 h-48 bg-gradient-to-b from-[#C41E3A]/20 to-transparent" />
-
-        <div className="relative px-5 py-8 max-w-lg mx-auto">
+        <div className="px-5 py-8 max-w-lg mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
